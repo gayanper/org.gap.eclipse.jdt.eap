@@ -1,0 +1,53 @@
+name: Build and Deploy
+
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Patch feature
+        run: mvn package -Ppatch-phase -DskipTests
+      - name: Patch feature
+        run: |
+          git add ./jdt-patch-feature/feature.xml
+          git commit -m "Update to latest JDT feature version"
+      - name: Checkout JDT modules
+        run: ./scripts/checkout-modules.sh
+      - name: Merge JDT gerrits
+        run: ./scripts/merge-gerrits.sh
+      - name: Build EAP patch
+        run: mvn -Pbuild-individual-bundles clean install -DskipTests
+      - name: Deploy p2 site
+        if: ${{ github.ref == 'refs/heads/master' }}
+        run: |
+          git config user.email "workflows@egithub.com"
+          git config user.name "workflows@egithub.com"
+          mkdir -p ./p2/
+          cp -r ./patch-site/target/site ./p2/i-builds
+          git add -f ./p2/i-builds/*
+          git stash
+          git fetch --all
+          git checkout --track origin/gh-pages
+          git rm -rf --ignore-unmatch ./p2/i-builds/*
+          git clean -df
+          git stash pop
+          git add -f ./p2/i-builds/*
+          git commit -m "Deploy artifacts to p2 update site"
+          git push origin gh-pages
+          git switch main
+          echo "Deployed successfully"
