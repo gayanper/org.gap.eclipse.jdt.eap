@@ -21,7 +21,7 @@ jobs:
         with:
           java-version: 11
       - name: Patch feature
-        run: mvn package -Ppatch-phase -DskipTests
+        run: mvn install -Ppatch-phase -DskipTests
       - name: Patch feature
         run: |
           git add ./jdt-patch-feature/feature.xml
