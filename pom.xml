@@ -73,7 +73,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>	
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
@@ -128,7 +128,7 @@
 				<module>feature-reader</module>
 			</modules>
 		</profile>
-		
+
 		<profile>
 			<id>build</id>
 			<modules>
@@ -137,6 +137,21 @@
 				<module>modules/eclipse.jdt.core</module>
 				<module>modules/eclipse.jdt.debug</module>
 			</modules>
+		</profile>
+		<profile>
+			<id>build-individual-bundles</id>
+			<repositories>
+				<repository>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<id>eclipse-hosted</id>
+					<url>https://repo.eclipse.org/content/repositories/eclipse/</url>
+				</repository>
+			</repositories>
 		</profile>
 	</profiles>
 </project>
