@@ -31,7 +31,7 @@ jobs:
       - name: Merge JDT gerrits
         run: ./scripts/merge-gerrits.sh
       - name: Build EAP patch
-        run: mvn -Pbuild-individual-bundles clean install -DskipTests
+        run: mvn -Pbuild-individual-bundles,build clean install -DskipTests
       - name: Deploy p2 site
         if: ${{ github.ref == 'refs/heads/master' }}
         run: |
