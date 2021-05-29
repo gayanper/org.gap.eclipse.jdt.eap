@@ -121,17 +121,21 @@
 			</plugin>
 		</plugins>
 	</build>
-	<modules>
-		<module>jdt-patch-feature</module>
-		<module>patch-site</module>
-		<module>modules/eclipse.jdt.core</module>
-		<module>modules/eclipse.jdt.debug</module>
-	</modules>
 	<profiles>
 		<profile>
 			<id>patch-phase</id>
 			<modules>
 				<module>feature-reader</module>
+			</modules>
+		</profile>
+		
+		<profile>
+			<id>build</id>
+			<modules>
+				<module>jdt-patch-feature</module>
+				<module>patch-site</module>
+				<module>modules/eclipse.jdt.core</module>
+				<module>modules/eclipse.jdt.debug</module>
 			</modules>
 		</profile>
 	</profiles>
