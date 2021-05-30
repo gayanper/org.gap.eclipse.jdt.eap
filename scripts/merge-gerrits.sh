@@ -28,6 +28,8 @@ cherry_pick "https://git.eclipse.org/r/jdt/eclipse.jdt.core" "refs/changes/45/18
 
 cherry_pick "https://git.eclipse.org/r/jdt/eclipse.jdt.core" "refs/changes/48/176748/6"
 
+cherry_pick "https://git.eclipse.org/r/jdt/eclipse.jdt.core" "refs/changes/55/181155/1"
+
 cd ../
 
 echo "Applying JDT.Debug gerrits"
