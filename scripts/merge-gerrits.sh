@@ -8,33 +8,44 @@ function cherry_pick {
 
     git cherry-pick FETCH_HEAD
     if [[ $? -ne 0 ]]; then
-        echo "Detected a conflict while applying: $1 $2, resetting repository."
-        git reset --hard
-        exit 100
+        # try to reset test code and see if the conflicts go away
+        for f in $(git status --porcelain | grep '/tests/' | sed 's/^D \+//')
+        do
+            git reset HEAD "$f"
+            git checkout HEAD -- "$f"
+        done
+
+        if [[ -z $(git ls-files --unmerged) ]]; then
+            git commit --no-edit
+            echo "::debug:: Recovered from a conflict while applying: $1 $2."
+        else    
+            git reset --hard
+            echo "::warning:: Detected a conflict while applying: $1 $2, ignoring patch."
+        fi
     fi       
 }
 
 # script start here
-cd ./modules
+script_dir=$(cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)
+source $script_dir/common.sh
+work_dir=$script_dir/../
+repo_file=$work_dir"patches/repos.txt"
 
-echo "Applying JDT.Core gerrits"
-cd ./eclipse.jdt.core
+read_repos $repo_file 
+cd $work_dir"modules"
 
-cherry_pick "https://git.eclipse.org/r/jdt/eclipse.jdt.core" "refs/changes/16/178816/18"
+for repo in "${read_repos_val[@]}"
+do
+    repo_key=$(read_key $repo)
+    repo_value=$(read_value $repo)
+    cd ./$repo_key
 
-cherry_pick "https://git.eclipse.org/r/jdt/eclipse.jdt.core" "refs/changes/43/180143/7"
-
-cherry_pick "https://git.eclipse.org/r/jdt/eclipse.jdt.core" "refs/changes/45/180745/1"
-
-cherry_pick "https://git.eclipse.org/r/jdt/eclipse.jdt.core" "refs/changes/48/176748/6"
-
-cherry_pick "https://git.eclipse.org/r/jdt/eclipse.jdt.core" "refs/changes/55/181155/1"
-
-cd ../
-
-echo "Applying JDT.Debug gerrits"
-cd ./eclipse.jdt.debug
-
-cherry_pick "https://git.eclipse.org/r/jdt/eclipse.jdt.debug" "refs/changes/46/180746/1"
-
-cd ../../
+    echo "Applying $repo_key gerrits"
+    read_refs $work_dir"/patches/"$repo_key".txt"
+    for ref in "${read_refs_val[@]}"
+    do
+        cherry_pick $repo_value $ref
+    done
+    cd ../
+done
+cd $work_dir

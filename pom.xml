@@ -134,8 +134,8 @@
 			<modules>
 				<module>jdt-patch-feature</module>
 				<module>patch-site</module>
-				<module>modules/eclipse.jdt.core</module>
-				<module>modules/eclipse.jdt.debug</module>
+				<module>modules/jdt.core</module>
+				<module>modules/jdt.debug</module>
 			</modules>
 		</profile>
 		<profile>

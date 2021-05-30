@@ -1,0 +1,2 @@
+jdt.core=https://git.eclipse.org/r/jdt/eclipse.jdt.core
+jdt.debug=https://git.eclipse.org/r/jdt/eclipse.jdt.debug
