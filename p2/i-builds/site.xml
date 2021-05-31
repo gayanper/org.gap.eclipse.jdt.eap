@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.gap.eclipse.jdt.eap.feature_1.0.0.20210530-1999.jar" id="org.gap.eclipse.jdt.eap.feature" version="1.0.0.20210530-1999" patch="true"/>
+   <feature url="features/org.gap.eclipse.jdt.eap.feature_1.0.0.20210531-0799.jar" id="org.gap.eclipse.jdt.eap.feature" version="1.0.0.20210531-0799" patch="true"/>
 </site>
