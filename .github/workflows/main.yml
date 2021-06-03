@@ -27,16 +27,21 @@ jobs:
           git config --global user.email "workflows@egithub.com"
           git config --global user.name "workflows@egithub.com"
       
+      - name: Create revert point
+        run: |
+          export RREV=$(git rev-parse --short HEAD)
+          
       - name: Patch feature
         run: mvn install -Pbuild-individual-bundles,patch-phase -DskipTests
       
       - name: Check feature state
         id: feature_updated
+        continue-on-error: true
         run: |
-          ! git diff-index --quiet HEAD --
+          ! git diff --exit-code ./jdt-patch-feature/feature.xml
       
       - name: Commit feature
-        if: steps.feature_updated.conclusion == 'success'
+        if: ${{ steps.feature_updated.outcome == 'success' }}
         id: feature_committed
         run: |
           git add ./jdt-patch-feature/feature.xml
@@ -44,19 +49,19 @@ jobs:
           git push origin
       
       - name: Checkout JDT modules
-        if: steps.feature_updated.conclusion == 'success'
+        if: ${{ steps.feature_updated.outcome == 'success' }}
         run: ./scripts/checkout-modules.sh
 
       - name: Merge JDT gerrits
-        if: steps.feature_updated.conclusion == 'success'
+        if: ${{ steps.feature_updated.outcome == 'success' }}
         run: ./scripts/merge-gerrits.sh
 
       - name: Build EAP patch
-        if: steps.feature_updated.conclusion == 'success'
+        if: ${{ steps.feature_updated.outcome == 'success' }}
         run: mvn -Pbuild-individual-bundles,build clean install -DskipTests
       
       - name: Deploy p2 site
-        if: ${{ github.ref == 'refs/heads/main' }} && steps.feature_updated.conclusion == 'success'
+        if: ${{ github.ref == 'refs/heads/main' && steps.feature_updated.outcome == 'success' }}
         run: |
           mkdir -p ./p2/
           cp -r ./patch-site/target/site ./p2/i-builds
@@ -71,9 +76,9 @@ jobs:
           git commit -m "Deploy artifacts to p2 update site"
           git push origin gh-pages
           git switch main
-          echo "Deployed successfully"
           
       - name: Revert if needed
-        if: failure() && ${{ github.ref == 'refs/heads/main' }} && steps.feature_committed.conclusion == 'success'
+        if: ${{ failure() && github.ref == 'refs/heads/main' && steps.feature_committed.outcome == 'success' }}
         run: |
-          git reset --hard HEAD~1
+          git reset --hard $RREV
+          git push origin --force
