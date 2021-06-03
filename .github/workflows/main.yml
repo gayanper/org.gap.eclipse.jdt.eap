@@ -26,20 +26,34 @@ jobs:
         run: |
           git config --global user.email "workflows@egithub.com"
           git config --global user.name "workflows@egithub.com"
+      
       - name: Patch feature
         run: mvn install -Pbuild-individual-bundles,patch-phase -DskipTests
-      - name: Patch feature
+      
+      - name: Check feature state
+        id: feature_updated
+        run: ! git diff-index --quiet HEAD --;
+      
+      - name: Commit feature
+        if: steps.feature_updated.conclusion == 'success'
         run: |
           git add ./jdt-patch-feature/feature.xml
           git commit -m "Update to latest JDT feature version"
+      
       - name: Checkout JDT modules
+        if: steps.feature_updated.conclusion == 'success'
         run: ./scripts/checkout-modules.sh
+
       - name: Merge JDT gerrits
+        if: steps.feature_updated.conclusion == 'success'
         run: ./scripts/merge-gerrits.sh
+
       - name: Build EAP patch
+        if: steps.feature_updated.conclusion == 'success'
         run: mvn -Pbuild-individual-bundles,build clean install -DskipTests
+      
       - name: Deploy p2 site
-        if: ${{ github.ref == 'refs/heads/main' }}
+        if: ${{ github.ref == 'refs/heads/main' }} && steps.feature_updated.conclusion == 'success'
         run: |
           mkdir -p ./p2/
           cp -r ./patch-site/target/site ./p2/i-builds
