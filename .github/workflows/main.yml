@@ -37,6 +37,7 @@ jobs:
       
       - name: Commit feature
         if: steps.feature_updated.conclusion == 'success'
+        id: feature_committed
         run: |
           git add ./jdt-patch-feature/feature.xml
           git commit -m "Update to latest JDT feature version"
@@ -71,3 +72,8 @@ jobs:
           git push origin gh-pages
           git switch main
           echo "Deployed successfully"
+          
+      - name: Revert if needed
+        if: failure() && ${{ github.ref == 'refs/heads/main' }} && steps.feature_committed.conclusion == 'success'
+        run: |
+          git reset --hard HEAD~1
