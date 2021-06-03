@@ -32,7 +32,8 @@ jobs:
       
       - name: Check feature state
         id: feature_updated
-        run: ! git diff-index --quiet HEAD --;
+        run: |
+          ! git diff-index --quiet HEAD --
       
       - name: Commit feature
         if: steps.feature_updated.conclusion == 'success'
