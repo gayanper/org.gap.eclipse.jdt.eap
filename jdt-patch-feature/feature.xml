@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="org.gap.eclipse.jdt.eap.feature" label="JDT EAP Patch Feature" version="1.0.0.qualifier" provider-name="GAP">
+<feature
+      id="org.gap.eclipse.jdt.eap.feature"
+      label="JDT EAP Patch Feature"
+      version="1.2.0.qualifier"
+      provider-name="GAP">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -14,13 +18,27 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.jdt" version="3.18.800.v20210603-0432" patch="true"/>
+      <import feature="org.eclipse.jdt" patch="true" version="3.18.800.qualifier"/>
    </requires>
 
-   <plugin id="org.eclipse.jdt.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+   <plugin
+         id="org.eclipse.jdt.core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
-   <plugin id="org.eclipse.jdt.debug" download-size="0" install-size="0" version="0.0.0"/>
+   <plugin
+         id="org.eclipse.jdt.debug"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
 
-   <plugin id="org.eclipse.jdt.debug.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+   <plugin
+         id="org.eclipse.jdt.debug.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
 </feature>

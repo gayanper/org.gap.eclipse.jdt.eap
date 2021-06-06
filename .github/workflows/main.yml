@@ -29,7 +29,8 @@ jobs:
       
       - name: Create revert point
         run: |
-          export RREV=$(git rev-parse --short HEAD)
+          rev=$(git rev-parse --short HEAD)
+          echo "revert_rev=$rev" >> $GITHUB_ENV
           
       - name: Patch feature
         run: mvn install -Pbuild-individual-bundles,patch-phase -DskipTests
@@ -80,5 +81,5 @@ jobs:
       - name: Revert if needed
         if: ${{ failure() && github.ref == 'refs/heads/main' && steps.feature_committed.outcome == 'success' }}
         run: |
-          git reset --hard $RREV
+          git reset --hard ${{ env.revert_rev }}
           git push origin --force
