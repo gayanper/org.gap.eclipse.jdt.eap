@@ -14,7 +14,7 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.jdt" patch="true" version="3.18.900.v20210615-1800"/>
+      <import feature="org.eclipse.jdt" patch="true" version=""/>
    </requires>
 
    <plugin id="org.eclipse.jdt.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
