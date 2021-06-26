@@ -4,7 +4,9 @@ function read_repos {
     local file_path=$1
     while IFS='=' read -r key value
     do
-        read_repos_val+=("$key:$value")
+        if [[ $key != \#* ]]; then
+            read_repos_val+=("$key:$value")
+        fi
     done < "$file_path"
 }
 
