@@ -33,7 +33,7 @@ jobs:
           echo "revert_rev=$rev" >> $GITHUB_ENV
           
       - name: Patch feature
-        run: mvn install -Pbuild-individual-bundles,patch-phase -DskipTests
+        run: ./mvnw install -Pbuild-individual-bundles,patch-phase -DskipTests
       
       - name: Check feature state
         id: feature_updated
@@ -59,7 +59,7 @@ jobs:
 
       - name: Build EAP patch
         if: ${{ steps.feature_updated.outcome == 'success' }}
-        run: mvn -Pbuild-individual-bundles,build clean install -DskipTests -e
+        run: ./mvnw -Pbuild-individual-bundles,build clean install -DskipTests -e
       
       - name: Deploy p2 site
         if: ${{ github.ref == 'refs/heads/main' && steps.feature_updated.outcome == 'success' }}
