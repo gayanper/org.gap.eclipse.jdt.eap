@@ -59,7 +59,7 @@ jobs:
 
       - name: Build EAP patch
         if: ${{ steps.feature_updated.outcome == 'success' }}
-        run: mvn -Pbuild-individual-bundles,build clean install -DskipTests
+        run: mvn -Pbuild-individual-bundles,build clean install -DskipTests -e
       
       - name: Deploy p2 site
         if: ${{ github.ref == 'refs/heads/main' && steps.feature_updated.outcome == 'success' }}
