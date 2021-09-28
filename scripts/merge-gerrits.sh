@@ -1,5 +1,7 @@
 #!/bin/bash
 function cherry_pick {
+    echo "Applying patch ref : $2"
+
     git fetch $1 $2
     if [[ $? -ne 0 ]]; then
         echo "Couldn't fetch gerrit: $1 $2"
