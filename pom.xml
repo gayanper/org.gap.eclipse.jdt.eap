@@ -136,6 +136,7 @@
 				<module>patch-site</module>
 				<module>modules/jdt.core</module>
 				<module>modules/jdt.debug</module>
+				<module>modules/jdt.ui</module>
 			</modules>
 		</profile>
 		<profile>
