@@ -11,7 +11,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+    inputs:
+      force_build:
+        description: 'Force the build regardless upstream has new builds'
+        required: true
+        default: 'false'
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -36,6 +40,7 @@ jobs:
         run: ./mvnw install -Pbuild-individual-bundles,patch-phase -DskipTests
       
       - name: Check feature state
+        if: ${{ github.event.inputs.force_build == 'false' }}
         id: feature_updated
         continue-on-error: true
         run: |
