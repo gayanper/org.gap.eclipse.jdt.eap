@@ -40,7 +40,6 @@ jobs:
         run: ./mvnw install -Pbuild-individual-bundles,patch-phase -DskipTests
       
       - name: Check feature state
-        if: ${{ github.event.inputs.force_build == 'false' }}
         id: feature_updated
         continue-on-error: true
         run: |
@@ -55,19 +54,19 @@ jobs:
           git push origin
       
       - name: Checkout JDT modules
-        if: ${{ steps.feature_updated.outcome == 'success' }}
+        if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
         run: ./scripts/checkout-modules.sh
 
       - name: Merge JDT gerrits
-        if: ${{ steps.feature_updated.outcome == 'success' }}
+        if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
         run: ./scripts/merge-gerrits.sh
 
       - name: Build EAP patch
-        if: ${{ steps.feature_updated.outcome == 'success' }}
+        if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
         run: ./mvnw -Pbuild-individual-bundles,build clean install -DskipTests -e
       
       - name: Deploy p2 site
-        if: ${{ github.ref == 'refs/heads/main' && steps.feature_updated.outcome == 'success' }}
+        if: ${{ github.ref == 'refs/heads/main' && steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
         run: |
           mkdir -p ./p2/
           cp -r ./patch-site/target/site ./p2/i-builds
