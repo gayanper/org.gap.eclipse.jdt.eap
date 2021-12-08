@@ -3,3 +3,4 @@ modules/
 **/.project
 **/.settings/
 **/target/
+.vscode/settings.json
