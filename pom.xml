@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>org.gap.eclipse.jdt.eap</groupId>
 	<artifactId>jdt-patch-parent</artifactId>
-	<version>1.3.0-SNAPSHOT</version>
+	<version>1.4.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
 		<tycho.version>2.7.0-SNAPSHOT</tycho.version>
@@ -137,6 +137,13 @@
 				<module>modules/jdt.core</module>
 				<module>modules/jdt.debug</module>
 				<module>modules/jdt.ui</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>version-update</id>
+			<modules>
+				<module>jdt-patch-feature</module>
+				<module>patch-site</module>
 			</modules>
 		</profile>
 		<profile>

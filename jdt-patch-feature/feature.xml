@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="org.gap.eclipse.jdt.eap.feature" label="JDT EAP Patch Feature" version="1.3.0.qualifier" provider-name="GAP">
+<feature id="org.gap.eclipse.jdt.eap.feature" label="JDT EAP Patch Feature" version="1.4.0.qualifier" provider-name="GAP">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
