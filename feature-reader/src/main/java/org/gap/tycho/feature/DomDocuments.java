@@ -14,6 +14,7 @@ public final class DomDocuments {
 	public static Document fromFile(Path compositeXml) throws SAXException, DocumentException {
 		SAXReader reader = new SAXReader();
 		reader.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+		reader.setValidation(false);
 		return reader.read(compositeXml.toFile());
 	}
 }
