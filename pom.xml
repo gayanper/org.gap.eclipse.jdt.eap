@@ -17,7 +17,7 @@
 		<tycho.extras.version>2.7.0</tycho.extras.version>
 		<tycho.test.platformArgs />
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
-		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.23-I-builds</ibuild.repo>
+		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.24-I-builds</ibuild.repo>
 	</properties>
 	<repositories>
 		<repository>
@@ -28,7 +28,7 @@
 		<repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
-			<url>https://download.eclipse.org/eclipse/updates/4.23-I-builds</url>
+			<url>https://download.eclipse.org/eclipse/updates/4.24-I-builds</url>
 		</repository>
 	</repositories>
 	<build>
