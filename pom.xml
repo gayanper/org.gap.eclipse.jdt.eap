@@ -13,8 +13,8 @@
 	<version>1.5.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
-		<tycho.version>2.7.0</tycho.version>
-		<tycho.extras.version>2.7.0</tycho.extras.version>
+		<tycho.version>3.0.0-SNAPSHOT</tycho.version>
+		<tycho.extras.version>3.0.0-SNAPSHOT</tycho.extras.version>
 		<tycho.test.platformArgs />
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
 		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.24-I-builds</ibuild.repo>
