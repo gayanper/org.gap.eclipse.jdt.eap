@@ -1,14 +1,9 @@
 #!/bin/bash
-function cherry_pick {
-    echo "Applying patch ref : $2"
+function cherry_pick_pr {
+    echo "Applying PR # : $1"
 
-    git fetch $1 $2
-    if [[ $? -ne 0 ]]; then
-        echo "Couldn't fetch gerrit: $1 $2"
-        exit 100
-    fi       
+    gh pr diff --patch PRNUMBER | git am .
 
-    git cherry-pick FETCH_HEAD
     if [[ $? -ne 0 ]]; then
         # try to reset test code and see if the conflicts go away
         for f in $(git status --porcelain | grep '/tests/' | sed 's/^D \+//')
@@ -42,11 +37,11 @@ do
     repo_value=$(read_value $repo)
     cd ./$repo_key
 
-    echo "Applying $repo_key gerrits"
+    echo "Applying $repo_key PRs"
     read_refs $work_dir"/patches/"$repo_key".txt"
     for ref in "${read_refs_val[@]}"
     do
-        cherry_pick $repo_value $ref
+        cherry_pick $ref
     done
     cd ../
 done
