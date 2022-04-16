@@ -41,7 +41,7 @@ do
     read_refs $work_dir"/patches/"$repo_key".txt"
     for ref in "${read_refs_val[@]}"
     do
-        cherry_pick $ref
+        cherry_pick_pr $ref
     done
     cd ../
 done
