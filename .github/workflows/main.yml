@@ -57,7 +57,7 @@ jobs:
         if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
         run: ./scripts/checkout-modules.sh
 
-      - name: Merge JDT gerrits
+      - name: Merge JDT PRs
         if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
         run: ./scripts/merge-prs.sh
 

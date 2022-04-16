@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.gap.eclipse.jdt.eap.feature" patch="true">
+      <category name="org.gap.eclipse.jdt.eap"/>
+   </feature>
+   <category-def name="org.gap.eclipse.jdt.eap" label="GAP EAP Patches"/>
+</site>
