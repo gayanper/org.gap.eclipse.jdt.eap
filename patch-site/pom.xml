@@ -9,7 +9,6 @@
 	</parent>
 	<artifactId>patch-site</artifactId>
 	<packaging>eclipse-repository</packaging>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -18,8 +17,8 @@
 				<version>${tycho.version}</version>
 				<configuration>
 					<includeAllDependencies>false</includeAllDependencies>
-					<createArtifactRepository>true</createArtifactRepository>
 					<compress>true</compress>
+					<includeReactor>false</includeReactor>
 				</configuration>
 			</plugin>
 		</plugins>
