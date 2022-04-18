@@ -26,6 +26,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: Setup Maven
+        uses: stCarolas/setup-maven@v4.3
+        with:
+          maven-version: 3.6.3
+          
       - name: Configure Git
         run: |
           git config --global user.email "workflows@egithub.com"
@@ -37,7 +42,7 @@ jobs:
           echo "revert_rev=$rev" >> $GITHUB_ENV
           
       - name: Patch feature
-        run: ./mvnw install -Pbuild-individual-bundles,patch-phase -DskipTests
+        run: mvn install -Pbuild-individual-bundles,patch-phase -DskipTests
       
       - name: Check feature state
         id: feature_updated
@@ -63,7 +68,7 @@ jobs:
 
       - name: Build EAP patch
         if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
-        run: ./mvnw -Pbuild-individual-bundles,build install -DskipTests || ./mvnw -Pbuild-individual-bundles,build install -rf :patch-site -DskipTests
+        run: mvn -Pbuild-individual-bundles,build install -DskipTests || ./mvnw -Pbuild-individual-bundles,build install -rf :patch-site -DskipTests
       
       - name: Deploy p2 site
         if: ${{ github.ref == 'refs/heads/main' && steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
