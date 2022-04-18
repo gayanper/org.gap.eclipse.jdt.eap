@@ -104,12 +104,17 @@
 		</profile>
 
 		<profile>
-			<id>build</id>
+			<id>build-phase1</id>
 			<modules>
 				<module>jdt-patch-feature</module>
 				<module>modules/jdt.core</module>
 				<module>modules/jdt.debug</module>
 				<module>modules/jdt.ui</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>build-phase2</id>
+			<modules>
 				<module>patch-site</module>
 			</modules>
 		</profile>
