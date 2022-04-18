@@ -110,6 +110,7 @@
 				<module>modules/jdt.core</module>
 				<module>modules/jdt.debug</module>
 				<module>modules/jdt.ui</module>
+				<module>patch-site</module>
 			</modules>
 		</profile>
 		<profile>
