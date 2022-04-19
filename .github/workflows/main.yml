@@ -36,10 +36,6 @@ jobs:
           git config --global user.email "workflows@egithub.com"
           git config --global user.name "workflows@egithub.com"
 
-      - name: Configure Github CLI
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-      
       - name: Create revert point
         run: |
           rev=$(git rev-parse --short HEAD)
@@ -67,6 +63,8 @@ jobs:
         run: ./scripts/checkout-modules.sh
 
       - name: Merge JDT PRs
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
         run: ./scripts/merge-prs.sh
 
