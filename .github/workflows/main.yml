@@ -38,7 +38,7 @@ jobs:
 
       - name: Configure Github CLI
         run: |
-          gh auth login --with-token
+          gh auth login --with-token ${{ env.GH_TOKEN }}
       
       - name: Create revert point
         run: |
