@@ -50,6 +50,10 @@
 						<argument>org.eclipse.jdt.feature.jar</argument>
 						<argument>-f</argument>
 						<argument>${basedir}/../jdt-patch-feature/feature.xml</argument>
+                        <argument>-p</argument>
+                        <argument>${basedir}/../pom.xml</argument>
+                        <argument>-x</argument>
+                        <argument>${basedir}/../proxies/org.eclipse.jdt.feature.proxy</argument>
 					</arguments>
 					<includeProjectDependencies>true</includeProjectDependencies>
 				</configuration>

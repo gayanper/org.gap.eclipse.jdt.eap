@@ -55,6 +55,9 @@ jobs:
         id: feature_committed
         run: |
           git add ./jdt-patch-feature/feature.xml
+          git add ./pom.xml
+          git add ./proxies/org.eclipse.jdt.feature.proxy/pom.xml
+          git add ./proxies/org.eclipse.jdt.feature.proxy/feature.xml
           git commit -m "Update to latest JDT feature version"
           git push origin
       
@@ -76,7 +79,7 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' && steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
         run: |
           mkdir -p ./p2/
-          cp -r ./jdt-patch-feature/target/site ./p2/i-builds
+          cp -r ./patch-site/target/repository ./p2/i-builds
           git add -f ./p2/i-builds/*
           git stash
           git fetch --all

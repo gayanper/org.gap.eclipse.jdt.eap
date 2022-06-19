@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -13,9 +14,11 @@
 	<properties>
 		<tycho.version>3.0.0-SNAPSHOT</tycho.version>
 		<tycho.extras.version>3.0.0-SNAPSHOT</tycho.extras.version>
-		<tycho.test.platformArgs />
+		<tycho.test.platformArgs/>
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
 		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.25-I-builds</ibuild.repo>
+		<jdt.patch.version>3.18.1300.v20220618-0340</jdt.patch.version>
+		<tycho.scmUrl>scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
 	</properties>
 	<repositories>
 		<repository>
@@ -56,22 +59,7 @@
 				<version>${tycho.version}</version>
 				<configuration>
 					<format>yyyyMMdd-HH99</format>
-					<deployableFeature>true</deployableFeature>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-p2-plugin</artifactId>
-				<version>${tycho.version}</version>
-				<executions>
-					<execution>
-						<id>attach-p2-metadata</id>
-						<phase>package</phase>
-						<goals>
-							<goal>p2-metadata</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
@@ -104,18 +92,17 @@
 		</profile>
 
 		<profile>
-			<id>build-phase1</id>
+			<id>build-phase</id>
 			<modules>
 				<module>jdt-patch-feature</module>
-				<module>modules/jdt.core</module>
-				<module>modules/jdt.debug</module>
-				<module>modules/jdt.ui</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>build-phase2</id>
-			<modules>
-				<module>patch-site</module>
+				<module>proxies/org.eclipse.jdt.feature.proxy</module>
+                <module>proxies/org.eclipse.jdt.proxy</module>
+				<module>modules/jdt.core/org.eclipse.jdt.core</module>
+				<module>modules/jdt.debug/org.eclipse.jdt.debug</module>
+                <module>modules/jdt.debug/org.eclipse.jdt.debug.ui</module>
+				<module>modules/jdt.ui/org.eclipse.jdt.ui</module>
+                <module>modules/jdt.ui/org.eclipse.jdt.core.manipulation</module>
+                <module>patch-site</module>
 			</modules>
 		</profile>
 		<profile>
