@@ -73,7 +73,7 @@ jobs:
 
       - name: Build EAP patch
         if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
-        run: ./mvnw -Pbuild-individual-bundles,build-phase1 install -DskipTests && ./mvnw -Pbuild-individual-bundles,build-phase2 install -DskipTests
+        run: ./mvnw -Pbuild-individual-bundles,build-phase verify -DskipTests
       
       - name: Deploy p2 site
         if: ${{ github.ref == 'refs/heads/main' && steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
