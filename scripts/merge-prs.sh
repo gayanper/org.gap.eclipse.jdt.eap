@@ -2,7 +2,7 @@
 function cherry_pick_pr {
     echo "Applying PR # : $1"
 
-    gh pr diff --patch PRNUMBER | git am .
+    gh pr diff --patch $1 | git am .
 
     if [[ $? -ne 0 ]]; then
         # try to reset test code and see if the conflicts go away
