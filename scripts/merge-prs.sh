@@ -2,8 +2,9 @@
 function cherry_pick_pr {
     echo "Applying PR # : $1"
 
-    gh pr diff --patch $1 | git am .
-
+    # gh pr diff --patch $1 | git am .
+    gh pr checkout $1
+    
     if [[ $? -ne 0 ]]; then
         # try to reset test code and see if the conflicts go away
         for f in $(git status --porcelain | grep '/tests/' | sed 's/^D \+//')
