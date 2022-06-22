@@ -17,7 +17,7 @@
 		<tycho.test.platformArgs/>
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
 		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.25-I-builds</ibuild.repo>
-		<jdt.patch.version>3.18.1300.v20220621-0440</jdt.patch.version>
+		<jdt.patch.version>3.18.1300.v20220621-2124</jdt.patch.version>
 		<tycho.scmUrl>scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
 	</properties>
 	<repositories>
