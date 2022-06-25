@@ -18,6 +18,7 @@
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
 		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.25-I-builds</ibuild.repo>
 		<jdt.patch.version>3.18.1300.v20220624-1800</jdt.patch.version>
+        <platform.patch.version>4.25.0.v20220624-1800</platform.patch.version>
 		<tycho.scmUrl>scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
 	</properties>
 	<repositories>
@@ -95,6 +96,7 @@
 			<id>build-phase</id>
 			<modules>
 				<module>jdt-patch-feature</module>
+                <module>platform-patch-feature</module>
 				<module>proxies/org.eclipse.jdt.feature.proxy</module>
                 <module>proxies/org.eclipse.jdt.proxy</module>
 				<module>modules/jdt.core/org.eclipse.jdt.core</module>
@@ -102,6 +104,11 @@
                 <module>modules/jdt.debug/org.eclipse.jdt.debug.ui</module>
 				<module>modules/jdt.ui/org.eclipse.jdt.ui</module>
                 <module>modules/jdt.ui/org.eclipse.jdt.core.manipulation</module>
+                
+                <module>proxies/org.eclipse.platform.feature.proxy</module>
+                <module>proxies/org.eclipse.platform.proxy</module>
+                <module>modules/platform.text/org.eclipse.jface.text</module>
+                
                 <module>patch-site</module>
 			</modules>
 		</profile>

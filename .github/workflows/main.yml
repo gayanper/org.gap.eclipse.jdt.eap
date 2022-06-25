@@ -49,15 +49,19 @@ jobs:
         continue-on-error: true
         run: |
           ! git diff --exit-code ./jdt-patch-feature/feature.xml
+          ! git diff --exit-code ./platform-patch-feature/feature.xml
       
       - name: Commit feature
         if: ${{ steps.feature_updated.outcome == 'success' }}
         id: feature_committed
         run: |
           git add ./jdt-patch-feature/feature.xml
+          git add ./platform-patch-feature/feature.xml
           git add ./pom.xml
           git add ./proxies/org.eclipse.jdt.feature.proxy/pom.xml
           git add ./proxies/org.eclipse.jdt.feature.proxy/feature.xml
+          git add ./proxies/org.eclipse.platform.feature.proxy/pom.xml
+          git add ./proxies/org.eclipse.platform.feature.proxy/feature.xml
           git commit -m "Update to latest JDT feature version"
           git push origin
       
@@ -65,7 +69,7 @@ jobs:
         if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
         run: ./scripts/checkout-modules.sh
 
-      - name: Merge JDT PRs
+      - name: Merge PRs
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}

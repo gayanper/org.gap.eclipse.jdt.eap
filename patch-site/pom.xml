@@ -20,6 +20,11 @@
                                 <id>org.eclipse.jdt</id>
                                 <versionRange>${jdt.patch.version}</versionRange>
                             </requirement>
+                            <requirement>
+                                <type>eclipse-feature</type>
+                                <id>org.eclipse.platform</id>
+                                <versionRange>${platform.patch.version}</versionRange>
+                            </requirement>
                         </extraRequirements>
                     </dependency-resolution>
                 </configuration>

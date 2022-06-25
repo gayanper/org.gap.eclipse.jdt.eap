@@ -22,6 +22,7 @@ public class FeaturePatchMojo {
 	private String patchFile;
 	private String pomFile;
 	private String proxyFeaturePath;
+	private String variableName;
 
 
 	public static void main(String[] args) throws Exception {
@@ -29,12 +30,14 @@ public class FeaturePatchMojo {
 		CommandLine commandLine = parser.parse(buildOptions(), args);
 		(new FeaturePatchMojo(commandLine.getOptionValue("repo"), commandLine.getOptionValue("id"), 
 				commandLine.getOptionValue("feature-file"), commandLine.getOptionValue("pom-file"),
-				commandLine.getOptionValue("proxy-feature"))).patchVersion();
+				commandLine.getOptionValue("proxy-feature"),
+				commandLine.getOptionValue("var"))).patchVersion();
 	}
 
 	private static Options buildOptions() {
 		Options options = new Options();
 		options.addRequiredOption("r", "repo", true, "P2 repository url");
+		options.addRequiredOption("v", "var", true, "Variable name");
 		options.addRequiredOption("i", "id", true, "Bundle symbolic name");
 		options.addRequiredOption("f", "feature-file", true, "Feature file to patch");
 		options.addRequiredOption("p", "pom-file", true, "POM file to patch version property");
@@ -43,12 +46,13 @@ public class FeaturePatchMojo {
 	}
 	
 	
-	public FeaturePatchMojo(String repo, String bundleId, String patchFile, String pomFile, String proxyFeaturePath) {
+	public FeaturePatchMojo(String repo, String bundleId, String patchFile, String pomFile, String proxyFeaturePath, String variableName) {
 		this.repo = repo;
 		this.bundleId = bundleId;
 		this.patchFile = patchFile;
 		this.pomFile = pomFile;
 		this.proxyFeaturePath = proxyFeaturePath;
+		this.variableName = variableName;
 	}
 	
 	public void patchVersion() throws SAXException, DocumentException, URISyntaxException, IOException {
@@ -67,7 +71,7 @@ public class FeaturePatchMojo {
 			
 			// patch the pom.xml
 			Document pomDocument = DomDocuments.fromFile(Paths.get(pomFile).normalize().toAbsolutePath());
-			node = (Element) pomDocument.selectSingleNode("/*[local-name()=\"project\"]/*[local-name()=\"properties\"]/*[local-name()=\"jdt.patch.version\"]");
+			node = (Element) pomDocument.selectSingleNode("/*[local-name()=\"project\"]/*[local-name()=\"properties\"]/*[local-name()=\""+ variableName + "\"]");
 			node.setText(version);
 			
 			try (FileWriter writer = new FileWriter(new File(pomFile))) {
