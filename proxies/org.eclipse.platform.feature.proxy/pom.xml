@@ -7,6 +7,6 @@
         <version>1.6.0-SNAPSHOT</version>
     </parent>
     <artifactId>org.eclipse.platform</artifactId>
-    <version>4.25.0.v20220804-1822</version>
+    <version>4.25.0.v20220805-2112</version>
     <packaging>eclipse-feature</packaging>
 </project>
