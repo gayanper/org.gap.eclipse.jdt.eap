@@ -2,7 +2,7 @@
 
 function clone_repo {
     echo "cloning $1 into $2"
-    git clone --depth=1 $1 $2 && git -C $2 checkout master
+    git clone $1 $2
 }
 
 
