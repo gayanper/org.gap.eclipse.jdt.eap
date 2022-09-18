@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="org.gap.eclipse.platform.eap.patch.feature" label="Platform EAP Patch Feature" version="1.6.0.qualifier" provider-name="GAP">
+<feature id="org.gap.eclipse.platform.eap.patch.feature" label="Platform EAP Patch Feature" version="1.7.0.qualifier" provider-name="GAP">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]

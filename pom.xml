@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>org.gap.eclipse.jdt.eap</groupId>
 	<artifactId>jdt-patch-parent</artifactId>
-	<version>1.6.0-SNAPSHOT</version>
+	<version>1.7.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
 		<tycho.version>3.0.0-SNAPSHOT</tycho.version>
@@ -116,6 +116,7 @@
 			<id>version-update</id>
 			<modules>
 				<module>jdt-patch-feature</module>
+                <module>platform-patch-feature</module>
 				<module>patch-site</module>
 			</modules>
 		</profile>
