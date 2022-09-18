@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.eclipse</groupId>
 		<artifactId>eclipse-platform-parent</artifactId>
-		<version>4.25.0-SNAPSHOT</version>
+		<version>4.26.0-SNAPSHOT</version>
 		<relativePath>../eclipse-platform-parent</relativePath>
 	</parent>
 	<groupId>org.gap.eclipse.jdt.eap</groupId>
@@ -16,7 +16,7 @@
 		<tycho.extras.version>3.0.0-SNAPSHOT</tycho.extras.version>
 		<tycho.test.platformArgs/>
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
-		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.25-I-builds</ibuild.repo>
+		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.26-I-builds</ibuild.repo>
 		<jdt.patch.version>3.18.1300.v20220831-1800</jdt.patch.version>
         <platform.patch.version>4.25.0.v20220831-1800</platform.patch.version>
 		<tycho.scmUrl>scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
@@ -30,7 +30,7 @@
 		<repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
-			<url>https://download.eclipse.org/eclipse/updates/4.25-I-builds</url>
+			<url>https://download.eclipse.org/eclipse/updates/4.26-I-builds</url>
 		</repository>
 	</repositories>
 	<build>
