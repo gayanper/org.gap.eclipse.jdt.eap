@@ -1,36 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.eclipse</groupId>
 		<artifactId>eclipse-platform-parent</artifactId>
-		<version>4.26.0-SNAPSHOT</version>
+		<version>4.27.0-SNAPSHOT</version>
 		<relativePath>../eclipse-platform-parent</relativePath>
 	</parent>
 	<groupId>org.gap.eclipse.jdt.eap</groupId>
 	<artifactId>jdt-patch-parent</artifactId>
 	<version>1.7.0-SNAPSHOT</version>
+	<version>1.7.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
-		<tycho.version>3.0.0-SNAPSHOT</tycho.version>
-		<tycho.extras.version>3.0.0-SNAPSHOT</tycho.extras.version>
-		<tycho.test.platformArgs/>
+		<tycho.version>
+			4.0.0-SNAPSHOT</tycho.version>
+		<tycho.extras.version>4.0.0-SNAPSHOT</tycho.extras.version>
+		<tycho.test.platformArgs />
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
-		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.26-I-builds</ibuild.repo>
-		<jdt.patch.version>3.18.1400.v20221002-1800</jdt.patch.version>
-        <platform.patch.version>4.26.0.v20221002-1824</platform.patch.version>
-		<tycho.scmUrl>scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
+		<ibuild.repo>
+			https://download.eclipse.org/eclipse/updates/4.27-I-builds</ibuild.repo>
+		<jdt.patch.version>
+			3.18.1300.v20220722-1800</jdt.patch.version>
+		<platform.patch.version>4.25.0.v20220722-1800</platform.patch.version>
+		<tycho.scmUrl>
+			scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
 	</properties>
 	<repositories>
 		<repository>
 			<id>release</id>
 			<layout>p2</layout>
-			<url>https://download.eclipse.org/releases/2022-09</url>
+			<url>https://download.eclipse.org/releases/2023-03</url>
 		</repository>
 		<repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
-			<url>https://download.eclipse.org/eclipse/updates/4.26-I-builds</url>
+			<url>https://download.eclipse.org/eclipse/updates/4.27-I-builds</url>
 		</repository>
 	</repositories>
 	<build>
@@ -59,7 +66,8 @@
 				<artifactId>tycho-packaging-plugin</artifactId>
 				<version>${tycho.version}</version>
 				<configuration>
-					<format>yyyyMMdd-HH99</format>
+					<format>
+						yyyyMMdd-HH99</format>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -67,7 +75,8 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho.version}</version>
 				<configuration>
-					<useUIHarness>true</useUIHarness>
+					<useUIHarness>
+						true</useUIHarness>
 					<argLine>${tycho.test.jvmArgs}</argLine>
 					<!-- kill test JVM if tests take more than 1 minute (60 seconds) to 
 						finish -->
@@ -79,7 +88,8 @@
 				<artifactId>maven-deploy-plugin</artifactId>
 				<version>2.8.2</version>
 				<configuration>
-					<skip>true</skip>
+					<skip>
+						true</skip>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -96,27 +106,27 @@
 			<id>build-phase</id>
 			<modules>
 				<module>jdt-patch-feature</module>
-                <module>platform-patch-feature</module>
+				<module>platform-patch-feature</module>
 				<module>proxies/org.eclipse.jdt.feature.proxy</module>
-                <module>proxies/org.eclipse.jdt.proxy</module>
+				<module>proxies/org.eclipse.jdt.proxy</module>
 				<module>modules/jdt.core/org.eclipse.jdt.core</module>
 				<module>modules/jdt.debug/org.eclipse.jdt.debug</module>
-                <module>modules/jdt.debug/org.eclipse.jdt.debug.ui</module>
+				<module>modules/jdt.debug/org.eclipse.jdt.debug.ui</module>
 				<module>modules/jdt.ui/org.eclipse.jdt.ui</module>
-                <module>modules/jdt.ui/org.eclipse.jdt.core.manipulation</module>
-                
-                <module>proxies/org.eclipse.platform.feature.proxy</module>
-                <module>proxies/org.eclipse.platform.proxy</module>
-                <module>modules/platform.text/org.eclipse.jface.text</module>
-                
-                <module>patch-site</module>
+				<module>modules/jdt.ui/org.eclipse.jdt.core.manipulation</module>
+
+				<module>proxies/org.eclipse.platform.feature.proxy</module>
+				<module>proxies/org.eclipse.platform.proxy</module>
+				<module>modules/platform.text/org.eclipse.jface.text</module>
+
+				<module>patch-site</module>
 			</modules>
 		</profile>
 		<profile>
 			<id>version-update</id>
 			<modules>
 				<module>jdt-patch-feature</module>
-                <module>platform-patch-feature</module>
+				<module>platform-patch-feature</module>
 				<module>patch-site</module>
 			</modules>
 		</profile>
