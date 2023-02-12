@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.eclipse</groupId>
@@ -17,12 +15,11 @@
 		<tycho.version>
 			4.0.0-SNAPSHOT</tycho.version>
 		<tycho.extras.version>4.0.0-SNAPSHOT</tycho.extras.version>
-		<tycho.test.platformArgs />
+		<tycho.test.platformArgs/>
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
 		<ibuild.repo>
 			https://download.eclipse.org/eclipse/updates/4.27-I-builds</ibuild.repo>
-		<jdt.patch.version>
-			3.19.0.v20230212-0600</jdt.patch.version>
+		<jdt.patch.version>3.19.0.v20230212-0600</jdt.patch.version>
 		<platform.patch.version>4.27.0.v20230212-0600</platform.patch.version>
 		<tycho.scmUrl>
 			scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
