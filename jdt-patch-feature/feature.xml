@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="org.gap.eclipse.jdt.eap.patch.feature" label="JDT EAP Patch Feature" version="1.7.0.qualifier" provider-name="GAP">
+<feature id="org.gap.eclipse.jdt.eap.patch.feature" label="JDT EAP Patch Feature"
+   version="1.7.0.qualifier" provider-name="GAP">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -14,17 +15,19 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.jdt" version="3.18.1400.v20221002-1800" patch="true"/>
+      <import feature="org.eclipse.jdt" version="3.19.0.v20230212-0600" patch="true" />
    </requires>
 
-   <plugin id="org.eclipse.jdt.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="org.eclipse.jdt.core" download-size="0" install-size="0" version="0.0.0"
+      unpack="false" />
 
-   <plugin id="org.eclipse.jdt.debug" download-size="0" install-size="0" version="0.0.0"/>
+   <plugin id="org.eclipse.jdt.core.compiler.batch" download-size="0" install-size="0"
+      version="0.0.0" unpack="false" />
 
-   <plugin id="org.eclipse.jdt.debug.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="org.eclipse.jdt.debug" download-size="0" install-size="0" version="0.0.0" />
 
-   <plugin id="org.eclipse.jdt.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
-   <plugin id="org.eclipse.jdt.core.manipulation" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="org.eclipse.jdt.core.manipulation" download-size="0" install-size="0" version="0.0.0"
+      unpack="false" />
 
 </feature>

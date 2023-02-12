@@ -3,8 +3,5 @@
    <feature id="org.gap.eclipse.jdt.eap.patch.feature" patch="true">
       <category name="org.gap.eclipse.jdt.eap" />
    </feature>
-   <!-- <feature id="org.gap.eclipse.platform.eap.patch.feature" patch="true">
-      <category name="org.gap.eclipse.jdt.eap"/>
-   </feature> -->
    <category-def name="org.gap.eclipse.jdt.eap" label="GAP EAP Patches"/>
 </site>

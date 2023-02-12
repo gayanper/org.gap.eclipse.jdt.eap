@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="org.eclipse.jdt" label="Feature Proxy" version="3.18.1400.v20221002-1800">
+<feature id="org.eclipse.jdt" label="Feature Proxy" version="3.19.0.v20230212-0600">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -13,6 +13,7 @@
       [Enter License Description here.]
    </license>
 
-   <plugin id="org.eclipse.jdt.proxy" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+   <plugin id="org.eclipse.jdt.proxy" download-size="0" install-size="0" version="0.0.0"
+      unpack="false" />
 
 </feature>
