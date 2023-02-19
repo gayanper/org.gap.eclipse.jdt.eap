@@ -15,6 +15,9 @@ on:
       force_build:
         description: 'Force the build regardless upstream has new builds'
         required: true
+        options:
+          - 'true'
+          - 'false'
         default: 'false'
 jobs:
   # This workflow contains a single job called "build"
