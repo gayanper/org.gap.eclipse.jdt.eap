@@ -15,7 +15,9 @@ function read_refs {
     local file_path=$1
     while IFS= read -r ref || [ -n "$ref" ]
     do
-        read_refs_val+=("$ref")
+        if [[ $ref != \#* ]]; then
+            read_refs_val+=("$ref")
+        fi
     done < "$file_path"
 }
 
