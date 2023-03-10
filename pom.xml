@@ -19,8 +19,7 @@
 		<ibuild.repo>
 			https://download.eclipse.org/eclipse/updates/4.28-I-builds</ibuild.repo>
 		<jdt.patch.version>3.19.100.v20230309-2307</jdt.patch.version>
-		<platform.patch.version>
-			4.28.0.v20230309-2126</platform.patch.version>
+		<platform.patch.version>4.28.0.v20230309-2126</platform.patch.version>
 		<tycho.scmUrl>
 			scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
 	</properties>
