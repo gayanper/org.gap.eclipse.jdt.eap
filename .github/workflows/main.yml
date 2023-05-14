@@ -30,7 +30,7 @@ jobs:
       - name: Setup Maven
         uses: stCarolas/setup-maven@v4.3
         with:
-          maven-version: 3.6.3
+          maven-version: 3.8.6
           
       - name: Configure Git
         run: |
