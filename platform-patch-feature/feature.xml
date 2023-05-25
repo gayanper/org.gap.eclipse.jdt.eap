@@ -14,7 +14,7 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.platform" version="4.28.0.v20230521-1800" patch="true"/>
+      <import feature="org.eclipse.platform" version="4.28.0.v20230524-1800" patch="true"/>
    </requires>
 
    <plugin id="org.eclipse.jface.text" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
