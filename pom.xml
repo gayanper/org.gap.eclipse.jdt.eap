@@ -11,17 +11,14 @@
 	<version>1.7.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
-		<tycho.version>
-			4.0.0-SNAPSHOT</tycho.version>
+		<tycho.version>4.0.0-SNAPSHOT</tycho.version>
 		<tycho.extras.version>4.0.0-SNAPSHOT</tycho.extras.version>
 		<tycho.test.platformArgs/>
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
-		<ibuild.repo>
-			https://download.eclipse.org/eclipse/updates/4.28-I-builds</ibuild.repo>
+		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.28-I-builds</ibuild.repo>
 		<jdt.patch.version>3.19.100.v20230528-1800</jdt.patch.version>
 		<platform.patch.version>4.28.0.v20230528-1800</platform.patch.version>
-		<tycho.scmUrl>
-			scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
+		<tycho.scmUrl>scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
 	</properties>
 	<repositories>
 		<repository>
