@@ -26,8 +26,6 @@ jobs:
         uses: stCarolas/setup-maven@v4.3
         with:
           maven-version: 3.9.1
-      - name: Clean .M2
-        run: rm -Rf /home/runner/.m2/repository
           
       - name: Configure Git
         run: |
@@ -75,7 +73,7 @@ jobs:
 
       - name: Build EAP patch
         if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
-        run: ./mvnw -U -Pbuild-individual-bundles,build-phase verify -DskipTests
+        run: ./mvnw -Pbuild-individual-bundles,build-phase verify -DskipTests
       
       - name: Deploy p2 site
         if: ${{ github.ref == 'refs/heads/main' && steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
