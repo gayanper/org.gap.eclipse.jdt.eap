@@ -26,6 +26,8 @@ jobs:
         uses: stCarolas/setup-maven@v4.3
         with:
           maven-version: 3.9.1
+      - name: Clean .M2
+        run: rm -Rf /home/runner/.m2/repository
           
       - name: Configure Git
         run: |
