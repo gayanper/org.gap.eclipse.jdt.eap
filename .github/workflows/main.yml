@@ -11,7 +11,14 @@ on:
         description: 'Force the build regardless upstream has new builds'
         required: true
         type: boolean
-        default: 'false'
+        default: false
+
+      ignore_merge_conflicts:
+        description: 'Ignore merge conflicts and continue'
+        required: false
+        type: boolean
+        default: false
+
 jobs:
   # This workflow contains a single job called "build"
   build:
@@ -69,7 +76,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}
-        run: ./scripts/merge-prs.sh
+        run: ./scripts/merge-prs.sh ${{ github.event.inputs.ignore_merge_conflicts }}
 
       - name: Build EAP patch
         if: ${{ steps.feature_updated.outcome == 'success' || github.event.inputs.force_build == 'true' }}

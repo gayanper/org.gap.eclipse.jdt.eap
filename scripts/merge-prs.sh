@@ -21,9 +21,14 @@ function cherry_pick_pr {
         if [[ -z $(git ls-files --unmerged) ]]; then
             git commit --no-edit
             echo "::debug:: Recovered from a conflict while applying: $1."
-        else    
+        else
             git reset --hard
-            echo "::warning:: Detected a conflict while applying: $1, ignoring patch."
+            # $2 ignore merge conflicts
+            if [ "$2" == "true" ]; then
+                echo "::warning:: Detected a conflict while applying: $1, ignoring patch."
+            else
+                echo "::error:: Detected a conflict while applying: $1, ignoring patch."
+            fi
         fi
     fi       
 }
@@ -33,6 +38,7 @@ script_dir=$(cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P)
 source $script_dir/common.sh
 work_dir=$script_dir/../
 repo_file=$work_dir"patches/repos.txt"
+ignore_merge_errors=$1
 
 read_repos $repo_file 
 cd $work_dir"modules"
@@ -47,7 +53,7 @@ do
     read_refs $work_dir"/patches/"$repo_key".txt"
     for ref in "${read_refs_val[@]}"
     do
-        cherry_pick_pr $ref
+        cherry_pick_pr $ref $ignore_merge_errors
     done
     cd ../
 done
