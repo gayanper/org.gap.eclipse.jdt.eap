@@ -11,8 +11,8 @@
 	<version>1.7.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
-		<tycho.version>4.0.2</tycho.version>
-		<tycho.extras.version>4.0.2</tycho.extras.version>
+		<tycho.version>4.0.3</tycho.version>
+		<tycho.extras.version>4.0.3</tycho.extras.version>
 		<tycho.test.platformArgs/>
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
 		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.30-I-builds</ibuild.repo>
@@ -24,7 +24,7 @@
 		<repository>
 			<id>release</id>
 			<layout>p2</layout>
-			<url>https://download.eclipse.org/eclipse/updates/4.29</url>
+			<url>https://download.eclipse.org/eclipse/updates/4.30</url>
 		</repository>
 		<repository>
 			<id>eclipse</id>
