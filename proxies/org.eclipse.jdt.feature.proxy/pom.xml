@@ -7,6 +7,6 @@
         <version>1.7.0-SNAPSHOT</version>
     </parent>
     <artifactId>org.eclipse.jdt</artifactId>
-    <version>3.19.300.v20231017-1520</version>
+    <version>3.19.300.v20231018-1800</version>
     <packaging>eclipse-feature</packaging>
 </project>
