@@ -16,8 +16,8 @@
 		<tycho.test.platformArgs/>
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
 		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.30-I-builds</ibuild.repo>
-		<jdt.patch.version>3.19.300.v20231107-1800</jdt.patch.version>
-		<platform.patch.version>4.30.0.v20231107-1800</platform.patch.version>
+		<jdt.patch.version>3.19.300.v20231108-0715</jdt.patch.version>
+		<platform.patch.version>4.30.0.v20231108-1058</platform.patch.version>
 		<tycho.scmUrl>scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
 	</properties>
 	<repositories>
