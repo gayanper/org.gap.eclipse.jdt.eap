@@ -15,7 +15,7 @@
 		<tycho.extras.version>4.0.5-SNAPSHOT</tycho.extras.version>
 		<tycho.test.platformArgs/>
 		<tycho.test.jvmArgs>-Xmx512m</tycho.test.jvmArgs>
-		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.30-I-builds</ibuild.repo>
+		<ibuild.repo>https://download.eclipse.org/eclipse/updates/4.31-I-builds</ibuild.repo>
 		<jdt.patch.version>3.19.300.v20231201-0110</jdt.patch.version>
 		<platform.patch.version>4.30.0.v20231201-0512</platform.patch.version>
 		<tycho.scmUrl>scm:git:https://github.com/gayanper/org.gap.eclipse.jdt.eap.git</tycho.scmUrl>
@@ -24,12 +24,12 @@
 		<repository>
 			<id>release</id>
 			<layout>p2</layout>
-			<url>https://download.eclipse.org/eclipse/updates/4.30</url>
+			<url>https://download.eclipse.org/eclipse/updates/4.31</url>
 		</repository>
 		<repository>
 			<id>eclipse</id>
 			<layout>p2</layout>
-			<url>https://download.eclipse.org/eclipse/updates/4.30-I-builds</url>
+			<url>https://download.eclipse.org/eclipse/updates/4.31-I-builds</url>
 		</repository>
 	</repositories>
 	<build>
