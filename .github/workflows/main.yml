@@ -49,10 +49,13 @@ jobs:
       
       - name: Check feature state
         id: feature_updated
-        continue-on-error: true
         run: |
-          ! git diff --exit-code ./jdt-patch-feature/feature.xml
-          ! git diff --exit-code ./platform-patch-feature/feature.xml
+          if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E 'feature.xml'; then
+            echo "Build"
+          else
+            echo "No build needed"
+            exit 1
+          fi
       
       - name: Commit feature
         if: ${{ steps.feature_updated.outcome == 'success' }}

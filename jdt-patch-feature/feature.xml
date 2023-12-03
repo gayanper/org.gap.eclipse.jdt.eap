@@ -14,7 +14,7 @@
    </license>
 
    <requires>
-      <import feature="org.eclipse.jdt" version="3.19.400.v20231203-0927" patch="true" />
+      <import feature="org.eclipse.jdt" version="3.19.300.v20231201-0110" patch="true" />
    </requires>
 
    <plugin id="org.eclipse.jdt.core" download-size="0" install-size="0" version="0.0.0" unpack="false" />
@@ -24,8 +24,6 @@
    <plugin id="org.eclipse.jdt.debug" download-size="0" install-size="0" version="0.0.0" />
 
    <plugin id="org.eclipse.jdt.core.manipulation" download-size="0" install-size="0" version="0.0.0" unpack="false" />
-
-   <plugin id="org.eclipse.jdt.apt.pluggable.core" download-size="0" install-size="0" version="0.0.0" unpack="false" />
 
    <plugin id="org.eclipse.jdt.apt.pluggable.core" download-size="0" install-size="0" version="0.0.0" unpack="false" />
 
