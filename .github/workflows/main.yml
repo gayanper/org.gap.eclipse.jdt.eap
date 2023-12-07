@@ -49,6 +49,7 @@ jobs:
       
       - name: Check feature state
         id: feature_updated
+        continue-on-error: true
         run: |
           if git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep -E 'feature.xml'; then
             echo "Build"
